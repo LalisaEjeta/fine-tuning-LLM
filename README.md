@@ -9,8 +9,8 @@ Prefix Tuning
 * Both prompt fine-tuning and pre-fix tuning learns soft prompt. In prompt fine-tuning the soft prompt is added to the input and in prefix-tuning the soft prompt is added to the attention layer. 
 * In prefix tuning, the learned �prefix� is added inside every Transformer layer�s attention mechanism, not at the input text. Specifically, it is added to: Key (K) and Value (V) vectors in self-attention.
 
-![Types of PEFT](image 1.png)
-![Types of PEFT](image 2.png)
+![Types of PEFT]("image 1.png")
+![Types of PEFT]("image 2.png")
 
 
 
