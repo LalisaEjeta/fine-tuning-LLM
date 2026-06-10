@@ -3,11 +3,14 @@
 * Soft prompts are not textual prompts. They are added as vectors to the input. 
 * It learns soft prompt which suitable for the task in hand. 
 * It learns by concatenating prompts at the input before the input layer. It starts with random soft prompt and learns good prompt that suits the task in hand over epochs.
-Prefix Tuning
-* Prefix Tuning learns a small set of continuous �prefix vectors� that are prepended to the model�s internal attention mechanism at every layer. 
+
+
+
+# Prefix Tuning
+* Prefix Tuning learns a small set of continuous prefix vectors that are prepended to the model's internal attention mechanism at every layer. 
 * In Prefix Tuning, the learned prefix is typically added to every Transformer layer, not just the input layer.
 * Both prompt fine-tuning and pre-fix tuning learns soft prompt. In prompt fine-tuning the soft prompt is added to the input and in prefix-tuning the soft prompt is added to the attention layer. 
-* In prefix tuning, the learned �prefix� is added inside every Transformer layer�s attention mechanism, not at the input text. Specifically, it is added to: Key (K) and Value (V) vectors in self-attention.
+* In prefix tuning, the learned prefix is added inside every Transformer layer�s attention mechanism, not at the input text. Specifically, it is added to: Key (K) and Value (V) vectors in self-attention.
 
 ![Types of PEFT]("image 1.png")
 ![Types of PEFT]("image 2.png")
@@ -31,7 +34,7 @@ o where h is the original hidden state and h^'is the updated hidden state. The a
 o In other words, with adapters, the input passes through both the original transformer layers and the adapter layers. During training, the original model is frozen, and only the adapters are trained.
 o 
 
-MLP at the head of pretrained LLM models
+# MLP at the head of pretrained LLM models
 * In a pretrained LLM, the MLP �at the head� (often called the output MLP / language modeling head / feed-forward head) plays a very specific role: it turns the model�s internal hidden representation into actual predictions over tokens.
 * MLP takes vector embeddings from transformer encoder. The input is the final hidden state from the transformer stack.
 * MLP does
@@ -43,13 +46,13 @@ o Project or shrinking back to original dimension. The activation function will 
 
 
 # LoRA fine-tuning
-* LoRA fine-tuning stands for Low-Rank Adaptation fine-tuning. It�s a technique used to efficiently adapt large neural networks (like large language models) to new tasks without retraining the whole model.
+* LoRA fine-tuning stands for Low-Rank Adaptation fine-tuning. It is a technique used to efficiently adapt large neural networks (like large language models) to new tasks without retraining the whole model.
 *  Instead of updating all the original model weights, LoRA:
 o Freezes the base model
-o Adds small, trainable �adapter� matrices into certain layers (usually attention layers)
+o Adds small, trainable adapter matrices into certain layers (usually attention layers)
 o Trains only these small matrices
 * When we use LoRA for fine-tuning the library by itself add these low rank matrix automatically. 
-* LoRA matrices are not attached per input token or per sample. They are attached to the model�s weight matrices, and they affect every input that passes through those layers.
+* LoRA matrices are not attached per input token or per sample. They are attached to the models weight matrices, and they affect every input that passes through those layers.
 * Take a linear layer: y=Wx
 * With LoRA: y=Wx+B(Ax)
 * So:
@@ -76,7 +79,7 @@ o Improved / advanced LoRA variants
 * Instead of fixed rank r, it:
 o dynamically allocates rank during training
 o More efficient parameter usage
-* Good when you don�t know optimal rank
+* Good when you don't know optimal rank
 * QLoRA
 * Combines: Quantized base model (4-bit) and LoRA adapters on top
 * Allows fine-tuning huge models on small GPUs
