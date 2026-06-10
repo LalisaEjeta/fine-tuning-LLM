@@ -4,3 +4,6 @@ imdb-lora/
 imdb-merged/
 results/
 bert_frozen_imdb/
+
+prefix_tuned_model_final/
+prefix_tuning_sst2_final/
